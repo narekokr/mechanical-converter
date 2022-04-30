@@ -19,7 +19,7 @@ export default class HarmonicMotion {
   }
 
   /**
-   * Returns a generator, which cna be used to obtain coordinates based on given parameters
+   * Returns a generator, which can be used to obtain coordinates based on given parameters
    * @param t0 - staring time
    * @param t1 - finishing time
    * @param dt - time step
