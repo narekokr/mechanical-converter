@@ -20,10 +20,10 @@ export default class Spring {
 
   /**
    * Private setter for stiffness
-   * @param {number} k - the new stiffness
+   * @param k - the new stiffness
    * @private
    */
-  private set k(k: number) {
+  private set k(k) {
     if (k <= 0) {
       throw new Error('Spring constant needs to be positive.');
     }
@@ -112,5 +112,41 @@ export default class Spring {
       coordinates.push(coordinate);
     }
     return coordinates;
+  }
+
+  /**
+   * returns a new Spring connected to the current spring in series
+   * @param that
+   */
+  inSeries(that: Spring): Spring {
+    return Spring.inSeries(this, that);
+  }
+
+  /**
+   * returns a new Spring connected to the current spring in parallel
+   * @param that - the spring to connect to
+   */
+  inParallel(that: Spring): Spring {
+    return Spring.inParallel(this, that);
+  }
+
+  /**
+   * returns a new Spring connected in series
+   * @param springOne - the first spring
+   * @param springTwo - the second spring
+   */
+  static inSeries(springOne: Spring, springTwo: Spring) {
+    const k = (springOne.k * springTwo.k) / (springOne.k + springTwo.k);
+    return new Spring(k);
+  }
+
+  /**
+   * returns a new Spring connected in parallel
+   * @param springOne - the first spring
+   * @param springTwo - the second spring
+   */
+  static inParallel(springOne: Spring, springTwo: Spring) {
+    const k = springOne.k + springTwo.k;
+    return new Spring(k);
   }
 }

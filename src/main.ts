@@ -1,4 +1,5 @@
 import Spring from './Spring';
+import SpringArray from './SpringArray';
 
 // some randomly selected starting conditions
 const t0 = 5;
@@ -9,17 +10,23 @@ const v0 = 1;
 const m0 = 2;
 
 // demonstration
-const defaultSpring = new Spring();
-console.log('Printing results with spring with default stiffness');
-console.log(defaultSpring.move(t0, dt, x0));
-console.log(defaultSpring.move(t0, dt, x0, v0));
-console.log(defaultSpring.move(t0, t1, dt, x0, v0));
-console.log(defaultSpring.move(t0, t1, dt, x0, v0, m0));
+console.log(
+  SpringArray.equivalentSpring('{[{}{}][]}', [
+    new Spring(10),
+    new Spring(10),
+    new Spring(10),
+  ]).k,
+);
 
-const k = 0.5;
-const spring = new Spring(k);
-console.log('Printing results with spring with stiffness 0.5');
-console.log(spring.move(t0, dt, x0));
-console.log(spring.move(t0, dt, x0, v0));
-console.log(spring.move(t0, t1, dt, x0, v0));
+console.log(
+  SpringArray.equivalentSpring('{[{[][{}{}]}{}][]}', [
+    new Spring(1),
+    new Spring(2),
+    new Spring(3),
+    new Spring(4),
+    new Spring(5),
+  ]).k,
+);
+
+const spring = SpringArray.equivalentSpring('{[[][]][{}{}{[][]}][{}{}]}');
 console.log(spring.move(t0, t1, dt, x0, v0, m0));
