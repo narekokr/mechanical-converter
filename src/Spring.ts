@@ -104,7 +104,7 @@ export default class Spring {
   ): number[] {
     const omega = Math.sqrt(this.k / m);
     const A = x0;
-    const B = -v0 / omega;
+    const B = v0 / omega;
     const harmonicMotion = new HarmonicMotion(A, B, omega);
     const coordinates = [];
     const generator = harmonicMotion.coordinatesGenerator(t0, t1, dt);
