@@ -1,5 +1,6 @@
 import Spring from './Spring';
 import SpringArray from './SpringArray';
+import FT from './FT';
 
 // some randomly selected starting conditions
 const t0 = 5;
@@ -30,3 +31,5 @@ console.log(
 
 const spring = SpringArray.equivalentSpring('{[[][]][{}{}{[][]}][{}{}]}');
 console.log(spring.move(t0, t1, dt, x0, v0, m0));
+
+console.log(FT.fft([0, 1, 2, 3]));
