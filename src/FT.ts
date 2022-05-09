@@ -40,6 +40,9 @@ export default class FT {
     return amplitudes;
   }
 
+  /**
+   * TS implementation of numpy's {@link https://numpy.org/doc/stable/reference/generated/numpy.fft.fftfreq.html|fftfreq} function
+   */
   static fftfreq(n: number, d = 1): number[] {
     const val = 1 / (n * d);
     const N = Math.floor((n - 1) / 2) + 1;
@@ -48,7 +51,10 @@ export default class FT {
     return p1.concat(p2).map((num) => num * val);
   }
 
-  static arange(start, stop: number, step = 1): number[] {
+  /**
+   * TS implementation of numpy's {@link https://numpy.org/doc/stable/reference/generated/numpy.arange.html|arange} function
+   */
+  static arange(start: number, stop: number, step = 1): number[] {
     const array = [];
     for (let i = start; i < stop; i += step) {
       array.push(i);
