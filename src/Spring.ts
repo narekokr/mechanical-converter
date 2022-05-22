@@ -86,11 +86,16 @@ export default class Spring {
     v0?: number,
     m?: number,
   ) {
-    const mass = m ?? 1;
-    if (v0) {
-      return this._move(t0, t1, dt, x0, v0, mass);
+    if (m) {
+      return this._move(t0, t1, dt, x0, v0, m);
     }
-    return this._move(0, t0, t1, dt, x0 || 0, mass);
+    if (v0) {
+      return this._move(t0, t1, dt, x0, v0, 1);
+    }
+    if (x0) {
+      return this._move(0, t0, t1, dt, x0, 1);
+    }
+    return this._move(0, t0, t1, dt, 0, 1);
   }
 
   // helper function

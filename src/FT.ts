@@ -61,4 +61,18 @@ export default class FT {
     }
     return array;
   }
+
+  /**
+   * Finds the index of the complex number with maximum real value
+   * @param amplitudes - array of complex numbers
+   */
+  static findMaxIndex(amplitudes: ComplexNumber[]): number {
+    let max = 0;
+    for (const [index, amplitude] of amplitudes.entries()) {
+      if (amplitude.re > amplitudes[max].re) {
+        max = index;
+      }
+    }
+    return max;
+  }
 }

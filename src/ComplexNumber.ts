@@ -37,4 +37,8 @@ export default class ComplexNumber {
     dest.im = er * Math.sin(this.im);
     return dest;
   }
+
+  toString() {
+    return this.re + ' ' + this.im;
+  }
 }
